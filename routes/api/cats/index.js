@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const db = require('../../../models/db')
 const passport = require('passport')
+
 const auth = (req, res, next) => {
   passport.authenticate('jwt', { session: false }, (err, user, info) => {
     if (!user || err) {
