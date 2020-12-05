@@ -24,14 +24,14 @@ app.use('/api/reg', routerReg)
 app.use('/api/auth', routerAuth)
 app.use('/api/cats', routerCats)
 
-app.use((_, res, __) => {
+app.use((_req, res, _next) => {
   res.status(404).json({
     statusMessage: 'Error',
     data: { status: 404, message: 'Use api on routes /api/cats' },
   })
 })
 
-app.use((err, _, res, __) => {
+app.use((err, _req, res, _next) => {
   console.log(err.stack)
   res.status(500).json({
     statusMessage: 'Error',

@@ -19,19 +19,18 @@ router.post('/', validDateOfUser, (req, res, next) => {
         },
       })
     }
-    if (user) {
-      const payload = {
-        id: user.id,
-        spec: 123,
-      }
-      const token = jwt.sign(payload, secret)
-      res.json({
-        statusMessage: 'Ok',
-        data: {
-          token: token,
-        },
-      })
+
+    const payload = {
+      id: user.id,
+      spec: 123,
     }
+    const token = jwt.sign(payload, secret)
+    res.json({
+      statusMessage: 'Ok',
+      data: {
+        token: token,
+      },
+    })
   })(req, res, next)
 })
 
